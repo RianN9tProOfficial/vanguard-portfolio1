@@ -1,59 +1,38 @@
 import Link from 'next/link';
 import Footer from '@/components/Footer';
+import { blogEntries } from '@/app/blogs/content';
 
-const articles = [
-  {
-    href: '/blog/discord-nitro-generator-scam',
-    title: 'The Truth About Discord Nitro Generators',
-    subtitle: 'Why free Nitro promises are usually malware in disguise.',
-    meta: 'August 2025 · 12 min read',
-    timestamp: 'Published Aug 14, 2025 · 09:40 UTC',
-  },
-  {
-    href: '/blog/mrbeast-casino-scam',
-    title: 'The Massive MrBeast Casino Scam Exposed',
-    subtitle: 'How fake platforms weaponize trust, celebrity influence, and stolen accounts at scale.',
-    meta: 'November 2025 · 8 min read',
-    timestamp: 'Published Nov 08, 2025 · 16:20 UTC',
-  },
-  {
-    href: '/blog/minecraft-verification-scam',
-    title: 'The Minecraft Verification Scam',
-    subtitle: 'How fake Discord servers are stealing player accounts.',
-    meta: 'January 2026 · 10 min read',
-    timestamp: 'Published Jan 12, 2026 · 11:05 UTC',
-  },
-];
+const orderedEntries = [...blogEntries].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export default function BlogIndexPage() {
   return (
     <>
-      <main className="editorial-index">
-        <div className="editorial-index-shell">
-          <p className="editorial-kicker">Cybersecurity Journal</p>
-          <h1>Investigations</h1>
-          <p className="editorial-index-intro">
-            Long-form investigative reports on modern social-engineering campaigns, malware delivery pipelines, and
-            account-takeover operations.
-          </p>
+      <main className="mx-auto w-full max-w-[1120px] px-5 pb-20 pt-28 sm:px-8 sm:pt-32">
+        <header className="border-b border-black/15 pb-10">
+          <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.18em] text-black/45">/01</p>
+          <h1 className="mt-3 font-[family-name:var(--font-stix)] text-[clamp(2.7rem,8vw,5.4rem)] tracking-[-0.03em]">BLOG</h1>
+        </header>
 
-          <div className="editorial-index-list">
-            {articles.map((article) => (
-              <article key={article.href} className="editorial-index-item">
-                <p>{article.meta}</p>
-                <h2>{article.title}</h2>
-                <p>{article.subtitle}</p>
-                <p className="editorial-timestamp">{article.timestamp}</p>
-                <Link href={article.href} className="editorial-read-btn">
-                  <span>Read</span>
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M5 12h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                    <path d="m13 6 6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                  </svg>
-                </Link>
-              </article>
-            ))}
-          </div>
+        <div className="mt-8 divide-y divide-black/12">
+          {orderedEntries.map((entry, index) => (
+            <Link
+              key={entry.slug}
+              href={`/blogs/${entry.slug}`}
+              className="group block py-7 transition duration-300 hover:translate-x-[4px] hover:opacity-95"
+              style={{ animation: 'blog-row-fade 500ms ease both', animationDelay: `${index * 80}ms` }}
+            >
+              <h2 className="font-[family-name:var(--font-stix)] text-[clamp(1.5rem,4vw,2.5rem)] tracking-[-0.02em]">{entry.title}</h2>
+              <p className="mt-2 max-w-[62ch] font-[family-name:var(--font-inter)] text-[1rem] leading-7 text-black/62">{entry.excerpt}</p>
+              <div className="mt-4 flex items-center justify-between gap-4">
+                <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.12em] text-black/45 uppercase">
+                  {entry.date} · {entry.readTime}
+                </p>
+                <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.12em] text-black/55 uppercase group-hover:text-black/80">
+                  OPEN →
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
       </main>
       <Footer />
