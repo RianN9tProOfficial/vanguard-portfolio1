@@ -82,10 +82,10 @@ export default function TimelineSection() {
             {journeyItems.map((item, index) => (
               <span
                 key={item.year}
-                className={`absolute left-1/2 h-2.5 w-2.5 -translate-x-1/2 rounded-full border border-black transition-all duration-300 ${
+                className={`absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-black transition-all duration-300 ${
                   index <= activeIndex ? 'bg-black' : 'bg-white'
                 }`}
-                style={{ top: `${(index / (journeyItems.length - 1)) * 100}%`, transform: 'translate(-50%, -50%)' }}
+                style={{ top: `${(index / (journeyItems.length - 1)) * 100}%` }}
               />
             ))}
           </div>
