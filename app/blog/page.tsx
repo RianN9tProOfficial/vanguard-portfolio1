@@ -17,7 +17,7 @@ export default function BlogIndexPage() {
           {orderedEntries.map((entry, index) => (
             <Link
               key={entry.slug}
-              href={`/blogs/${entry.slug}`}
+              href={`/blog/${entry.slug}`}
               className="group block py-7 transition duration-300 hover:translate-x-[4px] hover:opacity-95"
               style={{ animation: 'blog-row-fade 500ms ease both', animationDelay: `${index * 80}ms` }}
             >
