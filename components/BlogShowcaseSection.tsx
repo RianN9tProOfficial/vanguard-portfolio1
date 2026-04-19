@@ -1,15 +1,11 @@
-const blogPosts = [
-  {
-    date: 'March 2026',
-    title: 'Designing For Clarity In Complex Systems',
-    excerpt: 'How restraint, hierarchy, and pacing turn complex interfaces into effortless experiences.',
-  },
-  {
-    date: 'December 2025',
-    title: 'From Interface To System Thinking',
-    excerpt: 'Why great digital products are not screens first, but coherent systems first.',
-  },
-];
+import Link from 'next/link';
+
+const featuredPost = {
+  title: 'The Massive MrBeast Casino Scam Exposed',
+  excerpt:
+    'How fake platforms weaponize trust, celebrity influence, and stolen accounts at scale. Behind polished pages and viral claims is a coordinated funnel engineered to extract deposits before users can verify legitimacy.',
+  meta: 'November 2025 • 8 min read',
+};
 
 export default function BlogShowcaseSection() {
   return (
@@ -23,14 +19,17 @@ export default function BlogShowcaseSection() {
         </h2>
         <div className="home-section-divider" aria-hidden="true" />
 
-        <div className="home-blog-list">
-          {blogPosts.map((post) => (
-            <article key={post.title} className="home-blog-item">
-              <p className="home-blog-date">{post.date}</p>
-              <h3>{post.title}</h3>
-              <p>{post.excerpt}</p>
-            </article>
-          ))}
+        <article className="home-blog-feature" aria-label="Featured blog article">
+          <h3>{featuredPost.title}</h3>
+          <p>{featuredPost.excerpt}</p>
+          <span className="home-blog-meta">{featuredPost.meta}</span>
+          <div className="home-blog-fade" aria-hidden="true" />
+        </article>
+
+        <div className="home-blog-action">
+          <Link href="/blog" className="btn btn-secondary">
+            View More
+          </Link>
         </div>
       </div>
     </section>
