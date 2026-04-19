@@ -19,59 +19,45 @@ const journeyItems: JourneyItem[] = [
 
 export default function TimelineSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const itemRefs = useRef<Array<HTMLElement | null>>([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
-    const items = itemRefs.current.filter((item): item is HTMLElement => Boolean(item));
-    if (!items.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (!visible.length) return;
-
-        const nextIndex = items.findIndex((item) => item === visible[0].target);
-        if (nextIndex >= 0) setActiveIndex(nextIndex);
-      },
-      { threshold: [0.35, 0.5, 0.75], rootMargin: '-18% 0px -30% 0px' },
-    );
-
-    items.forEach((item) => observer.observe(item));
-
-    const updateProgress = () => {
+    const updateTimeline = () => {
       const rect = section.getBoundingClientRect();
       const viewport = window.innerHeight;
-      const total = Math.max(1, rect.height + viewport * 0.25);
-      const covered = viewport * 0.62 - rect.top;
-      const ratio = covered / total;
-      setProgress(Math.max(0, Math.min(1, ratio)));
+      const total = Math.max(1, rect.height - viewport * 0.65);
+      const covered = viewport * 0.48 - rect.top;
+      const ratio = Math.max(0, Math.min(1, covered / total));
+
+      const nextIndex = Math.min(journeyItems.length - 1, Math.floor(ratio * journeyItems.length));
+      setActiveIndex(nextIndex);
+      setProgress(ratio);
     };
 
-    updateProgress();
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    window.addEventListener('resize', updateProgress);
+    updateTimeline();
+    window.addEventListener('scroll', updateTimeline, { passive: true });
+    window.addEventListener('resize', updateTimeline);
 
     return () => {
-      observer.disconnect();
-      window.removeEventListener('scroll', updateProgress);
-      window.removeEventListener('resize', updateProgress);
+      window.removeEventListener('scroll', updateTimeline);
+      window.removeEventListener('resize', updateTimeline);
     };
   }, []);
 
-  const displayIndex = hoveredIndex ?? activeIndex;
-  const activeYear = useMemo(() => journeyItems[displayIndex]?.year ?? journeyItems[0].year, [displayIndex]);
+  const activeYear = useMemo(() => journeyItems[activeIndex]?.year ?? journeyItems[0].year, [activeIndex]);
+  const activeItem = journeyItems[activeIndex] ?? journeyItems[0];
 
   return (
-    <section className="journey" ref={sectionRef} aria-labelledby="journey-title">
+    <section
+      className="journey"
+      ref={sectionRef}
+      aria-labelledby="journey-title"
+      style={{ ['--journey-steps' as string]: journeyItems.length }}
+    >
       <div className="journey-shell">
         <span className="journey-label" aria-hidden="true">
           02 / JOURNEY
@@ -93,27 +79,16 @@ export default function TimelineSection() {
           <div className="journey-track" aria-hidden="true">
             <span className="journey-line" />
             <span className="journey-line-progress" style={{ transform: `scaleY(${progress})` }} />
+            {journeyItems.map((item, index) => (
+              <span key={item.year} className={`journey-marker journey-marker-rail ${index <= activeIndex ? 'is-hit' : ''}`} />
+            ))}
           </div>
 
-            <div className="journey-events">
-              {journeyItems.map((item, index) => {
-                const state = index === displayIndex ? 'is-active' : index < displayIndex ? 'is-past' : 'is-upcoming';
-                return (
-                  <article
-                    key={item.year}
-                    ref={(node) => {
-                      itemRefs.current[index] = node;
-                    }}
-                    className={`journey-event ${state}`}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                  >
-                  <span className="journey-marker" aria-hidden="true" />
-                  <h3>{item.year}</h3>
-                  <p>{item.description}</p>
-                </article>
-              );
-            })}
+          <div className="journey-events journey-events-locked">
+            <article className="journey-event is-active" key={activeItem.year}>
+              <h3>{activeItem.year}</h3>
+              <p>{activeItem.description}</p>
+            </article>
           </div>
         </div>
       </div>
