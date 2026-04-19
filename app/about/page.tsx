@@ -124,7 +124,6 @@ export default function AboutPage() {
           <div className="about-marquee-strip about-reveal" aria-hidden="true">
             <div className="about-marquee-track">
               <span>DESIGN — CODE — INTERFACES — MINIMALISM —</span>
-              <span>DESIGN — CODE — INTERFACES — MINIMALISM —</span>
             </div>
           </div>
 
