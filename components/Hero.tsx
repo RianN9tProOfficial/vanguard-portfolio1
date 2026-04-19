@@ -14,7 +14,7 @@ export default function Hero() {
     <>
       <section className="hero" id="work">
         <div className="hero-inner">
-          <p className="hero-kicker">Frontend Developer</p>
+          <p className="hero-kicker">Fullstack Developer</p>
           <h1 className="hero-title">Web development, done right.</h1>
           <p className="hero-description">
             I craft fast, clear, and thoughtfully designed digital experiences with an emphasis on clean code,
