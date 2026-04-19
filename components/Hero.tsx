@@ -1,54 +1,6 @@
-'use client';
-
-import { useCallback, useRef, type MouseEvent } from 'react';
-
-const magneticStrength = 14;
-
 export default function Hero() {
-  const heroRef = useRef<HTMLElement | null>(null);
-
-  const handleParallax = useCallback((event: MouseEvent<HTMLElement>) => {
-    const element = heroRef.current;
-    if (!element) return;
-
-    const rect = element.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-    element.style.setProperty('--grid-shift-x', `${x * 24}px`);
-    element.style.setProperty('--grid-shift-y', `${y * 24}px`);
-  }, []);
-
-  const resetParallax = useCallback(() => {
-    const element = heroRef.current;
-    if (!element) return;
-
-    element.style.setProperty('--grid-shift-x', '0px');
-    element.style.setProperty('--grid-shift-y', '0px');
-  }, []);
-
-  const handleMagneticMove = useCallback((event: MouseEvent<HTMLAnchorElement>) => {
-    const target = event.currentTarget;
-    const rect = target.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-    target.style.transform = `translate(${x * magneticStrength}px, ${y * magneticStrength}px)`;
-  }, []);
-
-  const resetMagneticMove = useCallback((event: MouseEvent<HTMLAnchorElement>) => {
-    event.currentTarget.style.transform = 'translate(0px, 0px)';
-  }, []);
-
   return (
-    <section
-      className="hero"
-      id="work"
-      ref={heroRef}
-      onMouseMove={handleParallax}
-      onMouseLeave={resetParallax}
-      aria-labelledby="hero-title"
-    >
+    <section className="hero" id="work" aria-labelledby="hero-title">
       <span className="hero-label" aria-hidden="true">
         01 / PORTFOLIO
       </span>
@@ -68,20 +20,10 @@ export default function Hero() {
         </p>
 
         <div className="hero-actions">
-          <a
-            className="btn btn-secondary"
-            href="/#work"
-            onMouseMove={handleMagneticMove}
-            onMouseLeave={resetMagneticMove}
-          >
+          <a className="btn btn-secondary" href="/#work">
             View Projects
           </a>
-          <a
-            className="btn btn-secondary"
-            href="/blog"
-            onMouseMove={handleMagneticMove}
-            onMouseLeave={resetMagneticMove}
-          >
+          <a className="btn btn-secondary" href="/blog">
             Read Articles
           </a>
         </div>

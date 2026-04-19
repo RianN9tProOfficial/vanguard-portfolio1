@@ -31,15 +31,16 @@ a {
   flex-direction: column;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 2rem 0;
+  padding: 6.75rem 2rem 0;
 }
 
 .navbar-wrap {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 30;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -80,9 +81,14 @@ a {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: rgba(17, 17, 17, 0.86);
-  transition: color 220ms ease;
+  transition:
+    color 220ms ease,
+    opacity 220ms ease,
+    transform 220ms ease,
+    letter-spacing 220ms ease;
   position: relative;
   padding-bottom: 0.2rem;
+  display: inline-block;
 }
 
 .nav-link::after {
@@ -103,11 +109,16 @@ a {
   transform: scaleX(1);
 }
 
+.nav-link:hover,
+.nav-link:focus-visible {
+  opacity: 0.74;
+  transform: translateY(-1px);
+  letter-spacing: 0.06em;
+}
+
 .hero {
-  --grid-shift-x: 0px;
-  --grid-shift-y: 0px;
   position: relative;
-  margin-top: 5.5rem;
+  margin-top: 1rem;
   padding: 8rem 1.25rem 5.5rem;
   min-height: 76vh;
   overflow: hidden;
@@ -119,12 +130,10 @@ a {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(17, 17, 17, 0.11) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(17, 17, 17, 0.11) 1px, transparent 1px);
+    linear-gradient(to right, rgba(17, 17, 17, 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 17, 17, 0.16) 1px, transparent 1px);
   background-size: 128px 128px;
-  transform: translate3d(var(--grid-shift-x), var(--grid-shift-y), 0);
-  transition: transform 400ms cubic-bezier(0.2, 0.6, 0.2, 1);
-  opacity: 0.32;
+  opacity: 0.5;
   z-index: -2;
 }
 
@@ -143,7 +152,7 @@ a {
 .hero-inner {
   max-width: 900px;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
 }
 
 .hero-title {
@@ -153,12 +162,13 @@ a {
   line-height: 0.95;
   letter-spacing: -0.03em;
   max-width: 11ch;
+  margin-inline: auto;
   color: #0a0a0a;
   animation: hero-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-subheading {
-  margin: 2rem 0 0;
+  margin: 2rem auto 0;
   max-width: 620px;
   font-family: var(--font-inter), sans-serif;
   font-size: clamp(1.05rem, 1.8vw, 1.28rem);
@@ -168,7 +178,7 @@ a {
 }
 
 .hero-description {
-  margin: 1rem 0 0;
+  margin: 1rem auto 0;
   max-width: 620px;
   font-family: var(--font-inter), sans-serif;
   font-size: clamp(1rem, 1.6vw, 1.15rem);
@@ -180,7 +190,7 @@ a {
 .hero-actions {
   margin-top: 2.5rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 0.95rem;
   animation: hero-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) 300ms both;
@@ -203,7 +213,7 @@ a {
   position: relative;
   overflow: hidden;
   transition:
-    transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 200ms ease,
     box-shadow 240ms ease,
     color 240ms ease;
 }
@@ -228,6 +238,7 @@ a {
 
 .btn:hover,
 .btn:focus-visible {
+  transform: translateY(-2px);
   box-shadow: 0 14px 24px -22px rgba(0, 0, 0, 0.5);
 }
 
@@ -309,7 +320,7 @@ a {
 
 @media (max-width: 720px) {
   .page-shell {
-    padding: 0 1rem;
+    padding: 6.1rem 1rem 0;
   }
 
   .navbar,
@@ -324,7 +335,7 @@ a {
   }
 
   .hero {
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     padding: 6rem 0.2rem 4rem;
   }
 
