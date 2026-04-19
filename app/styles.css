@@ -2137,3 +2137,41 @@ a {
     padding-bottom: 4.8rem;
   }
 }
+
+@media (max-width: 768px) {
+  .hero {
+    width: 100%;
+    margin-inline: auto;
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    max-width: 100%;
+  }
+
+  .hero-title,
+  .hero-subheading,
+  .hero-description {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .journey-pinned-section {
+    height: auto !important;
+    min-height: 0;
+    padding-bottom: 3.5rem;
+  }
+
+  .journey-pin-wrapper {
+    position: static;
+    height: auto;
+    min-height: 0;
+    padding-top: 0.5rem;
+  }
+}

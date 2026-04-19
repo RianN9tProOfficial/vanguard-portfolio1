@@ -54,10 +54,10 @@ export default function TimelineSection() {
     <section
       ref={sectionRef}
       aria-labelledby="journey-title"
-      className="relative bg-white text-black"
+      className="journey-pinned-section relative bg-white text-black"
       style={{ height: `${Math.max(420, journeyItems.length * 95)}vh` }}
     >
-      <div className="sticky top-0 flex h-screen items-center">
+      <div className="journey-pin-wrapper sticky top-0 flex h-screen items-center">
         <div className="mx-auto grid w-full max-w-[1120px] grid-cols-1 gap-8 px-6 md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-8">
           <div className="text-left md:text-center">
             <p className="font-[family-name:var(--font-inter)] text-[0.72rem] tracking-[0.18em] text-black/55">02 / JOURNEY</p>
