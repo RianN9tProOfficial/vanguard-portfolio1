@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, STIX_Two_Text } from 'next/font/google';
+import Navbar from '@/components/Navbar';
 import './styles.css';
 
 const inter = Inter({
@@ -26,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${stixTwoText.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
 const navItems = [
-  { label: 'Projects', href: '/projects' },
-  { label: 'Blog', href: '/blogs' },
+  { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/#contact-title' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {

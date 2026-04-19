@@ -72,8 +72,8 @@ export default function ContactFooterSection() {
         </header>
 
         <div className="contact-details">
-          <a className="contact-email contact-reveal" href="mailto:contacts.rian.dev@gmail.com">
-            contacts.rian.dev@gmail.com
+          <a className="contact-email contact-reveal" href="mailto:rian.contact.dev@gmail.com">
+            rian.contact.dev@gmail.com
           </a>
 
           <nav className="contact-links contact-reveal" aria-label="Contact social links">
