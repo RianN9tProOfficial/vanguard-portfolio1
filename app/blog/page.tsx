@@ -3,11 +3,11 @@ import Footer from '@/components/Footer';
 
 const articles = [
   {
-    href: '/blog/discord-nitro-generator-scam',
-    title: 'The Truth About Discord Nitro Generators',
-    subtitle: 'Why free Nitro promises are usually malware in disguise.',
-    meta: 'August 2025 · 12 min read',
-    timestamp: 'Published Aug 14, 2025 · 09:40 UTC',
+    href: '/blog/minecraft-verification-scam',
+    title: 'The Minecraft Verification Scam',
+    subtitle: 'How fake Discord servers are stealing player accounts.',
+    meta: 'January 2026 · 10 min read',
+    timestamp: 'Published Jan 12, 2026 · 11:05 UTC',
   },
   {
     href: '/blog/mrbeast-casino-scam',
@@ -17,11 +17,11 @@ const articles = [
     timestamp: 'Published Nov 08, 2025 · 16:20 UTC',
   },
   {
-    href: '/blog/minecraft-verification-scam',
-    title: 'The Minecraft Verification Scam',
-    subtitle: 'How fake Discord servers are stealing player accounts.',
-    meta: 'January 2026 · 10 min read',
-    timestamp: 'Published Jan 12, 2026 · 11:05 UTC',
+    href: '/blog/discord-nitro-generator-scam',
+    title: 'The Truth About Discord Nitro Generators',
+    subtitle: 'Why free Nitro promises are usually malware in disguise.',
+    meta: 'August 2025 · 12 min read',
+    timestamp: 'Published Aug 14, 2025 · 09:40 UTC',
   },
 ];
 
