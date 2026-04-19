@@ -1819,12 +1819,12 @@ a {
 
 .journey {
   position: relative;
-  padding: 8rem 0;
+  padding: 5.5rem 0 6.5rem;
   background: #fff;
 }
 
 .journey-story {
-  margin-top: 2.8rem;
+  margin-top: 1.6rem;
   display: grid;
   grid-template-columns: 1.1fr 30px 1.4fr;
   gap: 1.5rem;
@@ -1837,7 +1837,8 @@ a {
 
 .journey-year-panel {
   position: sticky;
-  top: 8.6rem;
+  top: 50vh;
+  transform: translateY(-50%);
   padding-right: 2rem;
 }
 
@@ -2037,7 +2038,7 @@ a {
 
 @media (max-width: 960px) {
   .journey {
-    padding: 6.8rem 0;
+    padding: 5.4rem 0;
   }
 
   .journey-story {
@@ -2051,6 +2052,7 @@ a {
 
   .journey-year-panel {
     position: static;
+    transform: none;
     padding-right: 0;
   }
 
