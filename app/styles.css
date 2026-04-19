@@ -1894,7 +1894,13 @@ a {
   position: relative;
   padding-left: 1.2rem;
   min-height: 126px;
-  transition: opacity 380ms ease, transform 380ms ease;
+  border-left: 1px solid transparent;
+  transition:
+    opacity 380ms ease,
+    transform 380ms ease,
+    border-color 280ms ease,
+    padding-left 280ms ease;
+  cursor: default;
 }
 
 .journey-marker {
@@ -1923,16 +1929,34 @@ a {
   font-size: 1.02rem;
   line-height: 1.85;
   color: rgba(17, 17, 17, 0.74);
+  transition: color 260ms ease;
+}
+
+.journey-event:hover {
+  opacity: 1;
+  transform: translateY(0);
+  padding-left: 1.45rem;
+  border-left-color: rgba(17, 17, 17, 0.2);
+}
+
+.journey-event:hover .journey-marker {
+  transform: scale(1.12);
 }
 
 .journey-event.is-active {
   opacity: 1;
   transform: translateY(0);
+  padding-left: 1.45rem;
+  border-left-color: rgba(17, 17, 17, 0.25);
 }
 
 .journey-event.is-active .journey-marker {
   background: #111;
   transform: scale(1.16);
+}
+
+.journey-event.is-active p {
+  color: rgba(17, 17, 17, 0.9);
 }
 
 .journey-event.is-past {

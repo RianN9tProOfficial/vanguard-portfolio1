@@ -21,6 +21,7 @@ export default function TimelineSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const itemRefs = useRef<Array<HTMLElement | null>>([]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -66,7 +67,8 @@ export default function TimelineSection() {
     };
   }, []);
 
-  const activeYear = useMemo(() => journeyItems[activeIndex]?.year ?? journeyItems[0].year, [activeIndex]);
+  const displayIndex = hoveredIndex ?? activeIndex;
+  const activeYear = useMemo(() => journeyItems[displayIndex]?.year ?? journeyItems[0].year, [displayIndex]);
 
   return (
     <section className="journey" ref={sectionRef} aria-labelledby="journey-title">
@@ -93,17 +95,19 @@ export default function TimelineSection() {
             <span className="journey-line-progress" style={{ transform: `scaleY(${progress})` }} />
           </div>
 
-          <div className="journey-events">
-            {journeyItems.map((item, index) => {
-              const state = index === activeIndex ? 'is-active' : index < activeIndex ? 'is-past' : 'is-upcoming';
-              return (
-                <article
-                  key={item.year}
-                  ref={(node) => {
-                    itemRefs.current[index] = node;
-                  }}
-                  className={`journey-event ${state}`}
-                >
+            <div className="journey-events">
+              {journeyItems.map((item, index) => {
+                const state = index === displayIndex ? 'is-active' : index < displayIndex ? 'is-past' : 'is-upcoming';
+                return (
+                  <article
+                    key={item.year}
+                    ref={(node) => {
+                      itemRefs.current[index] = node;
+                    }}
+                    className={`journey-event ${state}`}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
                   <span className="journey-marker" aria-hidden="true" />
                   <h3>{item.year}</h3>
                   <p>{item.description}</p>
