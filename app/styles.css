@@ -1702,3 +1702,328 @@ a {
     max-width: none;
   }
 }
+
+.about-bridge {
+  position: relative;
+  padding: 7rem 0 2rem;
+}
+
+.about-bridge::before,
+.journey::before,
+.home-projects::before,
+.home-blog::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.07) 0.4px, transparent 0.4px);
+  background-size: 3px 3px;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.about-bridge-shell,
+.journey-shell,
+.home-projects-shell,
+.home-blog-shell {
+  position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.about-bridge-label,
+.journey-label,
+.home-section-label {
+  display: block;
+  text-align: center;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.17em;
+  color: rgba(17, 17, 17, 0.58);
+}
+
+.about-bridge-decoration {
+  display: block;
+  width: min(280px, 100%);
+  margin: 1.2rem auto 0;
+  stroke: rgba(0, 0, 0, 0.5);
+  fill: none;
+}
+
+.about-bridge-title,
+.journey-title,
+.home-section-title {
+  margin: 1rem 0 0;
+  text-align: center;
+  font-family: var(--font-stix), Georgia, serif;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+}
+
+.about-bridge-divider,
+.journey-divider,
+.home-section-divider {
+  width: min(860px, 100%);
+  margin: 1.7rem auto 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.2);
+}
+
+.about-bridge-copy,
+.about-bridge-philosophy {
+  margin: 2.1rem auto 0;
+  max-width: 780px;
+  text-align: center;
+}
+
+.about-bridge-paragraph,
+.about-bridge-philosophy-line {
+  margin: 0 0 1rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(1.02rem, 1.9vw, 1.2rem);
+  line-height: 1.85;
+  color: rgba(17, 17, 17, 0.82);
+}
+
+.about-bridge-philosophy {
+  margin-top: 2.8rem;
+}
+
+.about-bridge-philosophy-line {
+  font-family: var(--font-stix), Georgia, serif;
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  line-height: 1.45;
+  color: rgba(10, 10, 10, 0.94);
+}
+
+.about-bridge-quote {
+  margin: 3rem auto 0;
+  max-width: 640px;
+  text-align: center;
+}
+
+.about-bridge-quote-line {
+  display: block;
+  width: 72px;
+  height: 1px;
+  margin: 0 auto 1rem;
+  background: rgba(17, 17, 17, 0.36);
+}
+
+.about-bridge-quote p {
+  margin: 0;
+  font-family: var(--font-stix), Georgia, serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  line-height: 1.45;
+}
+
+.journey {
+  position: relative;
+  padding: 8rem 0;
+  background: #fff;
+}
+
+.journey-story {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1.1fr 30px 1.4fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.journey-year-panel {
+  position: sticky;
+  top: 7.8rem;
+  padding-right: 2rem;
+}
+
+.journey-active-year {
+  margin: 0;
+  font-family: var(--font-stix), Georgia, serif;
+  font-size: clamp(4rem, 11vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+}
+
+.journey-panel-note {
+  margin: 1rem 0 0;
+  max-width: 250px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(17, 17, 17, 0.62);
+}
+
+.journey-track {
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.journey-line,
+.journey-line-progress {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.journey-line {
+  background: rgba(17, 17, 17, 0.18);
+}
+
+.journey-line-progress {
+  background: #111;
+  transform-origin: top center;
+  transition: transform 280ms ease-out;
+}
+
+.journey-events {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.journey-event {
+  position: relative;
+  padding-left: 1.2rem;
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+
+.journey-marker {
+  position: absolute;
+  left: -1.92rem;
+  top: 0.75rem;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #111;
+  border-radius: 999px;
+  background: #fff;
+  transition: transform 260ms ease, background-color 260ms ease;
+}
+
+.journey-event h3 {
+  margin: 0;
+  font-family: var(--font-stix), Georgia, serif;
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  letter-spacing: -0.02em;
+}
+
+.journey-event p {
+  margin: 0.65rem 0 0;
+  max-width: 34ch;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: rgba(17, 17, 17, 0.74);
+}
+
+.journey-event.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.journey-event.is-active .journey-marker {
+  background: #111;
+  transform: scale(1.16);
+}
+
+.journey-event.is-past {
+  opacity: 0.45;
+}
+
+.journey-event.is-upcoming {
+  opacity: 0.65;
+  transform: translateY(10px);
+}
+
+.home-projects,
+.home-blog {
+  position: relative;
+  padding: 7rem 0 2rem;
+}
+
+.home-project-list,
+.home-blog-list {
+  margin-top: 2.2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.home-project-item,
+.home-blog-item {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.14);
+}
+
+.home-project-year,
+.home-blog-date {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.5);
+}
+
+.home-project-item h3,
+.home-blog-item h3 {
+  margin: 0.45rem 0 0;
+  font-family: var(--font-stix), Georgia, serif;
+  font-size: clamp(1.35rem, 2.7vw, 2rem);
+  letter-spacing: -0.02em;
+}
+
+.home-project-item p,
+.home-blog-item p {
+  margin: 0.5rem 0 0;
+  max-width: 56ch;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(17, 17, 17, 0.74);
+}
+
+@media (max-width: 960px) {
+  .journey-story {
+    grid-template-columns: 1fr;
+    gap: 1.3rem;
+  }
+
+  .journey-year-panel {
+    position: static;
+    padding-right: 0;
+  }
+
+  .journey-track {
+    display: none;
+  }
+
+  .journey-events {
+    gap: 2rem;
+    padding-left: 1.1rem;
+    border-left: 1px solid rgba(17, 17, 17, 0.2);
+  }
+
+  .journey-event {
+    padding-left: 0.4rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  .journey-marker {
+    left: -1.43rem;
+    top: 0.55rem;
+    width: 9px;
+    height: 9px;
+    background: #fff;
+    transform: none;
+  }
+
+  .journey-panel-note,
+  .home-project-item p,
+  .home-blog-item p {
+    max-width: 100%;
+  }
+}
