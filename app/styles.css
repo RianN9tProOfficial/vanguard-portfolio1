@@ -1831,10 +1831,6 @@ a {
   align-items: start;
 }
 
-.journey-story-pin {
-  position: relative;
-}
-
 .journey-year-panel {
   position: sticky;
   top: 50vh;
@@ -2044,10 +2040,6 @@ a {
   .journey-story {
     grid-template-columns: 1fr;
     gap: 1.3rem;
-  }
-
-  .journey-story-pin {
-    position: static !important;
   }
 
   .journey-year-panel {
