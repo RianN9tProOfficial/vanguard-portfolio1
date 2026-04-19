@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${stixTwoText.variable}`}>
-      <body>
+      <body className="pt-16 sm:pt-[4.4rem]">
         <Navbar />
         {children}
       </body>
